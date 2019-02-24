@@ -1,0 +1,46 @@
+extends ./layouts/head.pug
+block vars
+	- navSelected = 'membership'
+block content 
+	.content.columns
+		.is-two-third.column
+			if errors && errors.length > 0
+				.field
+					each val in errors
+						.notification.is-danger= val
+			h1 Membership
+			h3 Early Adopters Pricing
+			p Get in early, save a ton, and help shape the product according to business needs.
+			.pricing
+				.old $50/month
+				.new $50 for 1 full year
+			br
+			li No automatic renews
+			li Available only For limited time and to limited amount of customers.
+			li Be the First to try new features.
+			li Front row seats to Stepgrab's journey. Give direct feedback.
+			li Give boost to your business by attracting new customers and keep current customer coming back.
+
+			br
+			.field.columns 
+				form#payment-form(action='/dashboard/membership', method='post').column.is-two-thirds
+					.field
+						.form-row
+							label(for='card-element')
+								| Credit or debit card
+							#card-element
+							#card-errors(role='alert')
+					.field 
+						button.button.is-link Submit Payment
+
+			.field
+				a.button(href="/contact") Got questions? Contact Us
+		.is-one-third.column.img
+			.text Get New Customers by Giving First Timer Discounts
+		
+	
+	
+
+append body 
+	script(src='https://js.stripe.com/v3/')
+	script(src='/js/business.js')

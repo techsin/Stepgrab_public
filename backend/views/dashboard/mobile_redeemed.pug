@@ -1,0 +1,22 @@
+extends ../layouts/head.pug
+block style
+	link(rel="stylesheet", href="/css/bulma.min.css")
+	link(rel="stylesheet", href="/css/dashboard.css")
+
+block body
+	body(id="mobile_redeemed")
+		.container.content.has-text-centered
+			if (errors || []).length > 0
+				.field
+					each val in errors
+						div(class=`notification is-danger`)= val
+			.logo Stepgrab
+			img(src="/img/success_check.svg").check
+			h1.has-text-success Code Redeemed
+			.notification.is-success
+				.has-text-white-bis= deal.title
+			
+			.field#go_back
+				a(href="/dashboard/mobile").button.is-link.is-large.is-fullwidth Check Another Code
+
+		script(src='/js/business.js')

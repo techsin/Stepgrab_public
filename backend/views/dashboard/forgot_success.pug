@@ -1,0 +1,18 @@
+extends ./../layouts/head.pug
+block style
+	link(rel="stylesheet", href="/css/bulma.min.css")
+	link(rel="stylesheet", href="/css/dashboard.css")
+
+block body
+	body#registerLogin
+		a(href="/business").logo STEPGRAB
+		h3.motto Get New Customers
+		h3.title Email is on its way!
+		.columns
+			.column.is-half.is-offset-one-quarter
+				.notification.is-success Great! Check your Email for Password Reset Link!
+				.has-text-centered
+					p If there is an account, you should get an email with in few minutes.
+					br
+					a(href="/business").button Go to Hompage
+		

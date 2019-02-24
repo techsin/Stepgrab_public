@@ -1,0 +1,88 @@
+extends ./layouts/head.pug
+block append body
+	script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAokYsRb2fEMi4ZueG7S05yrjl1LmcYs_Y&libraries=places&callback=initAutocomplete', async='', defer='')
+	script(src="/js/autocomplete.js")
+
+block vars
+	- navSelected = 'settings'
+	- body = body || {}
+block content 
+	if errors.length > 0
+		.field
+			each val in errors
+				.notification.is-danger= val
+				
+	h1.title Settings
+	.section
+		.columns
+			.content.column.is-half
+				h2 About You
+				hr
+				form(action="/dashboard/self" method="POST")
+					.field.is-grouped
+						.control
+							label.label First Name
+								input(type="text" name="firstName" value=body.firstName required).input
+						.control
+							label.label Last Name
+								input(type="text" name="lastName" value=body.lastName required).input
+					.field
+						label.label Email Address
+						input(type="text" value=body.email disabled).input
+					.field
+						input(type="submit" class='button is-link' value='Update')
+
+		.columns
+			.content.column.is-half
+				h2 About Business
+				hr
+				form(action="/dashboard/bizinfo" method="POST")
+					.field
+						label.label Business/Shop Name
+						input(type="text" class='input' name='company' placeholder='Business/Shop Name' value=body.company required)
+					.field
+						label.label Description
+							textarea(type="text" class='textarea' name='description' placeholder='In one sentence, what is your business about' required)
+								= body.description
+					.field
+						label.label Category
+						.select
+							select(name="category" id="category" required)
+								option(selected) Select Category
+								option(value="beauty" selected=body.category=="beauty") Beauty
+								option(value="food" selected=body.category=="food") Food
+								option(value="fun" selected=body.category=="fun") Fun
+								option(value="clothing" selected=body.category=="clothing") Clothing
+								option(value="other" selected=body.category=="other") Other
+					.field
+						label.label Street Address
+						input(type="text" class='input' name='street' placeholder='Street Address' id="street" value=body.street required) 
+					.field.is-grouped
+						.control
+							label.label City
+								input(type="text" class='input' name='city' placeholder='City' id="city" value=body.city required) 
+						.control
+							label.label State
+								input(type="text" class='input' name='state' placeholder='State' id="state" value=body.state required) 
+					.field.is-grouped
+						.control
+							label.label Zipcode
+								input(type="number" class='input' name='zipcode' placeholder='Zipcode' id='zipcode' value=body.zipcode required) 
+						.control
+							label.label Country
+								input(type="text" class='input' name='country' placeholder='Country' id='country' value=body.country required) 
+					.field
+						input(type="submit" class='button is-link' value='Update')
+
+		.columns
+			.content.column.is-half
+				h2 About Account
+				hr
+				.field
+					label.label Change Password
+					a(href="/dashboard/change_password" class='button') Change Password
+				.field
+					label.label Delete Account
+					a(href="/dashboard/delete_account" class='button is-danger') Delete Account
+
+		

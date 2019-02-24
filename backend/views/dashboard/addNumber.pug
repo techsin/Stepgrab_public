@@ -1,0 +1,15 @@
+extends ./layouts/head.pug
+block vars
+	- navSelected = 'notifications'
+block content 
+	h1.title Add Phone Number
+	.columns
+		form(action="/dashboard/add_number" method='POST').column.is-one-third
+			if errors.length > 0
+				.field
+					each val in errors
+						.notification.is-danger= val
+			.field
+				input(type="tel" class='input' name='phone' placeholder='Phone Number' required)
+			.field
+				input(type="submit" class='button is-link' value='Add Number')

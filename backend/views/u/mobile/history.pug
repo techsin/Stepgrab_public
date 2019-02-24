@@ -1,0 +1,19 @@
+extends ./_layout.pug
+block vars
+	- navSelected = "history"
+block header
+	p Used Discounts
+block content
+	.container
+		each deal in deals
+			a.deal(href="/u/history/"+deal.id)
+				.left
+					.category= deal.category
+					.title= deal.title
+					.company= deal.User.company
+				.right
+					.expires= deal.DealsUsed.used ? "Used" : "Expired"
+
+
+block script
+	script(src='/js/mobile.js')

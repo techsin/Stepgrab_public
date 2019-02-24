@@ -1,0 +1,244 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+}
+
+.top {
+    background-color: #000;
+    background: linear-gradient(rgba(0, 0, 0, 0.51), rgba(0, 0, 0, 0.5)), url(/img/biz_landing_bg.jpg);
+    color: white;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+header {
+    text-align: right;
+    max-width: 1100px;
+    margin: auto;
+    a {
+        text-decoration: none;
+        color: #fff;
+        padding: 5px;
+        font-size: 14px;
+        margin: 15px 4px;
+        display: inline-block;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    position: relative;
+}
+
+.logo {
+    font-size: 68px;
+    font-weight: 100;
+    margin-bottom: 25px;
+}
+
+.hero {
+    margin-top: 66px;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 73px;
+}
+
+.pricing-promo {
+    font-size: 18px;
+    border-radius: 1000px;
+    background-color: #151d7f;
+    padding: 20px;
+}
+
+.left .description {
+    font-size: 25px;
+    max-width: 368px;
+}
+
+.right {
+    form {
+        background-color: rgba(246, 246, 246, .19);
+        padding: 27px 19px;
+        border-radius: 4px;
+        border: 1px solid rgba(214, 214, 214, .19);
+    }
+    .forgot_pwd {
+        color: #1681DF;
+        text-decoration: none;
+        margin: 11px 19px;
+        display: block;
+    }
+    input[type='text'],
+    input[type='password'],
+    input[type='email'] {
+        padding: 14px 18px;
+        border-radius: 4px;
+        outline: none;
+        border: 1px solid #95989A;
+        display: block;
+        margin-bottom: 22px;
+        width: 377px;
+        box-sizing: border-box;
+        font-size: 15px;
+    }
+    .btns {
+        display: flex;
+        justify-content: space-between;
+    }
+    .btns>* {
+        width: 164px;
+        padding: 14px;
+        border: none;
+        border-radius: 4px;
+        background-color: #fff;
+        color: #333;
+        text-align: center;
+        text-decoration: none;
+        font-size: 14px;
+        box-sizing: border-box;
+    }
+    .btns input[type='submit'] {
+        color: white;
+        background-color: #0879EB;
+        cursor: pointer;
+    }
+}
+
+.hero_desc {
+    background-color: #000;
+    padding-top: 114px;
+    padding-bottom: 128px;
+    text-align: center;
+    color: white;
+    position: relative;
+    .big {
+        font-size: 31px;
+        margin-bottom: 12px;
+    }
+    .medium {
+        font-weight: 100;
+        font-size: 22px;
+    }
+    .container {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+    }
+    .video_icon {
+        user-select: none;
+        cursor: pointer;
+        background-color: #0879EB;
+        height: 76px;
+        width: 76px;
+        border-radius: 100%;
+        border: 45px solid white;
+        right: 0;
+        top: 100%;
+        transform: translateY(-50%);
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        .arrow {
+            border: 15px solid transparent;
+            border-left-color: #fff;
+            border-top-width: 10px;
+            border-bottom-width: 10px;
+            margin-right: -20px;
+        }
+    }
+}
+
+.heading_main {
+    margin-top: 99px;
+    font-size: 31px;
+    font-weight: 100;
+    text-align: center;
+    color: #0879EB;
+    margin-bottom: 70px;
+}
+
+.how_works {
+    max-width: 800px;
+    font-size: 18px;
+    margin: auto;
+    li {
+        list-style: none;
+        margin-bottom: 10px;
+        max-width: 800px;
+        box-shadow: 0px 1px 6px rgba(0, 0, 0, .2);
+        padding: 20px;
+        font-weight: 300;
+        border-radius: 10000px;
+        &.active {
+            background: #0878eb;
+            color: white;
+            font-weight: 600;
+            max-width: 300px;
+            text-align: center;
+            margin: auto;
+        }
+    }
+}
+
+.how_story {
+    max-width: 506px;
+    font-size: 18px;
+    margin: auto;
+}
+
+.features {
+    max-width: 805px;
+    margin: auto;
+    color: #707070;
+    font-size: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 100px;
+    .feature {
+        width: 50%;
+        height: 140px;
+        &.disabled {
+            .title {
+                color: #8F8F8F;
+            }
+        }
+    }
+    .title {
+        font-size: 22px;
+        color: #0879EB;
+        font-weight: 800;
+        margin-bottom: 5px;
+    }
+    .desc {
+        max-width: 295px;
+    }
+}
+
+footer {
+    padding: 25px 3px;
+    background-color: #F1F1F1;
+    &>a {
+        text-decoration: none;
+        color: #5A5A5A;
+        padding: 5px 20px;
+        margin: 0 4px;
+        font-size: 14px;
+    }
+}
+
+.form_btn.register+div {
+    display: none;
+}

@@ -1,0 +1,71 @@
+extends ./layouts/head.pug
+block style
+    link(rel='stylesheet', href='/css/leaflet.css')
+    link(rel="stylesheet", href="css/homepage.css")
+block body
+    body
+      header
+        a(href='/business') For Business
+        a(href='/faqs') FAQs
+        unless customer
+          a(href='/u/login') Login
+        else 
+          a(href='/u/')= customer.name
+          a(href='/u/logout') Logout
+      .container
+        if (errors||[]).length > 0
+          .field
+            each val in errors
+              .notification.is-danger= val
+        if (notifications||[]).length > 0
+          .field
+            each val in notifications
+              .notification.is-success= val
+        .logo StepGrab
+        .motto Grab first timer di$counts near you 
+        .location
+          | I live in 
+          span.city New York, NY
+        #change_location_btn change
+        .filter
+          div Food
+          div Beauty
+          div Fun
+          div Other
+          div.selected All
+        #map
+        h3.centered_heading How It Works?
+        .how_list
+          .item
+            img(src='/img/magnification-lens@2x.png')
+            .text Find a deal you like
+          .item
+            img(src='/img/smartphone@2x.png')
+            .text
+              | Recieve Coupon Code
+              | in Text Message
+          .item
+            img(src='/img/star@2x.png')
+            .text
+              | Get discount by
+              | showing code to cashier
+        .testimonials
+          .item
+            img(src='/img/home_user_1.png')
+            .text I found my new go to sushi bar
+          .item.reverse
+            img(src='/img/home_user_2.png')
+            .text
+              | The best way to remain on
+              | budget & explore city life
+          .item
+            img(src='/img/home_user_3.png')
+            .text Free and Useful, Love it!
+      footer
+        a(href='/contact') Contact Us
+        a(href='/careers') Careers
+        a(href='/aboutus') About Us
+        a(href='/dashboard/register') Business Signup
+        a(href='/tos') TOS
+      script(src='/js/leaflet.js')
+      script(src='/js/homepage.js')

@@ -1,0 +1,215 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: rgb(245, 245, 245);
+    border-bottom: 1px solid #a2a2a2;
+    display: flex;
+    padding: 15px;
+    align-items: center;
+    .logo {
+        font-size: 30px;
+        color: #666;
+    }
+    .nav {
+        margin-left: auto;
+        a {
+            color: #333;
+            text-decoration: none;
+            display: inline-block;
+            padding: 8px;
+            &:hover {
+                background-color: rgba(0, 0, 0, .05);
+            }
+        }
+    }
+}
+
+.left {
+    .menu {
+        padding: 10px;
+        li {
+            margin-bottom: 12px;
+        }
+    }
+}
+
+.right {
+    background-color: rgb(226, 226, 226);
+    min-height: 100vh;
+    .box {
+        margin: 20px;
+    }
+}
+
+#g-recaptcha-response {
+    display: block !important;
+    position: absolute;
+    margin: -78px 0 0 0 !important;
+    width: 302px !important;
+    height: 76px !important;
+    z-index: -999999;
+    opacity: 0;
+}
+
+#registerLogin {
+    .logo {
+        text-align: center;
+        font-size: 53px;
+        margin-top: 50px;
+        display: block;
+        text-decoration: none;
+        color: #333;
+    }
+    .motto {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .title {
+        text-align: center;
+    }
+    form {
+        max-width: 500px;
+        margin: 50px auto;
+        margin-top: 10px;
+        padding: 20px;
+    }
+}
+
+#settings {
+    .input {
+        max-width: 300px;
+    }
+}
+
+#mobile {
+    .container {
+        padding: 20px;
+        height: 100vh;
+        box-sizing: border-box;
+    }
+    .check {
+        position: relative;
+    }
+    .btn {
+        position: relative;
+        .button {
+            justify-content: flex-start;
+            padding-left: 60px;
+        }
+        img {
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+        }
+    }
+    .logout {
+        position: absolute;
+        bottom: 10px;
+        transform: translateX(-50%);
+        left: 50%;
+        padding: 8px 15px;
+        text-align: center;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+    }
+    #preview-div {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background: #333;
+        z-index: 1000;
+        #preview {
+            height: 100%;
+            width: 100%;
+        }
+        .exit,
+        .cycle-cameras {
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            padding: 10px;
+            background-color: #fff;
+            color: #333;
+        }
+        .exit {
+            left: 50px;
+            right: auto;
+        }
+    }
+    .hide {
+        display: none !important;
+    }
+}
+
+#mobile_redeemed {
+    .container {
+        padding: 20px;
+        min-height: 100vh;
+        box-sizing: border-box;
+    }
+    img.check {
+        height: 80px;
+        display: block;
+        margin: auto;
+        margin-top: 50px;
+    }
+    h1 {
+        margin-top: 10px;
+    }
+    .notification {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 35px;
+    }
+}
+
+#membership {
+    .pricing {
+        font-size: 30px;
+        font-weight: 700;
+        .old {
+            color: #aaa;
+            text-decoration: line-through;
+        }
+    }
+    .StripeElement {
+        background-color: white;
+        height: 40px;
+        padding: 10px 12px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        box-shadow: 0 1px 3px 0 #e6ebf1;
+        -webkit-transition: box-shadow 150ms ease;
+        transition: box-shadow 150ms ease;
+    }
+    .StripeElement--focus {
+        box-shadow: 0 1px 3px 0 #cfd7df;
+    }
+    .StripeElement--invalid {
+        border-color: #fa755a;
+    }
+    .StripeElement--webkit-autofill {
+        background-color: #fefde5 !important;
+    }
+    .is-one-third.column.img {
+        background-image: url("/img/bg_member.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        box-sizing: border-box;
+        padding: 30px;
+        .text {
+            font-size: 60px;
+            color: #fff;
+            font-weight: 700;
+            text-shadow: 1px 1px 5px black;
+        }
+    }
+}

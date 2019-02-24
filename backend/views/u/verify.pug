@@ -1,0 +1,30 @@
+extends ../layouts/head.pug
+block style
+	link(rel="stylesheet", href="/css/bulma.min.css")
+	link(rel="stylesheet", href="/css/main.css")
+block body
+	body#verify
+		.box.container
+			- errors = errors || []
+			if errors.length > 0
+				.field
+					each val in errors
+						div(class=`notification is-danger`)= val
+			.columns
+				.column.content.has-text-centered
+					a.logo.is-large(href='/') StepGrab
+					p.is-small.has-text-grey Enter the code from text message
+			.columns
+				form.column#verify_form(action="/u/verify" method="POST")
+					.field.is-grouped.digits
+						input(type="number" size="6" max="999999" pattern="[0-9]*" placeholder="0000000" inputmode="numeric" name="token").input
+						//- input(type="number" size="1" max="9" pattern="[0-9]*" placeholder="0" inputmode="numeric" name="token[1]").input
+						//- input(type="number" size="1" max="9" pattern="[0-9]*" placeholder="0" inputmode="numeric" name="token[2]").input
+						//- input(type="number" size="1" max="9" pattern="[0-9]*" placeholder="0" inputmode="numeric" name="token[3]").input
+						//- input(type="number" size="1" max="9" pattern="[0-9]*" placeholder="0" inputmode="numeric" name="token[4]").input
+						//- input(type="number" size="1" max="9" pattern="[0-9]*" placeholder="0" inputmode="numeric" name="token[5]").input
+					
+						
+					.field
+						input(type="submit" value="Verify").button.is-static.is-medium#verify_btn
+		script(src="/js/verify.js")

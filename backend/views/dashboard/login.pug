@@ -1,0 +1,30 @@
+extends ./../layouts/head.pug
+block style
+	link(rel="stylesheet", href="/css/bulma.min.css")
+	link(rel="stylesheet", href="/css/dashboard.css")
+
+block body
+	body#registerLogin
+		a(href="/business").logo STEPGRAB
+		h3.motto Get New Customers
+		h3.title Login
+		form(action="/dashboard/login" method='POST')
+			if errors.length > 0
+				.field
+					each val in errors
+						.notification.is-danger= val
+			.field
+				input(type="email" class='input' name='email' placeholder='Email Adress' value=(email||[])[0] required)
+			.field
+				input(type="password" class='input' name='password' placeholder='Password' required)
+			.field
+				.g-recaptcha(data-sitekey='6LcgTkgUAAAAAKUZRCzG43MXnRyFfT_UEG6xj6g6')
+			.field
+				input(type="submit" class='button is-link input is-medium' value='Login')
+			.field.level
+				.control
+					a.button.is-text(href="/dashboard/forgot") Forgot Password?
+				.control.level-right
+					a.button.is-text(href="/dashboard/register") New? Register!
+		script(src='https://www.google.com/recaptcha/api.js')
+		script(src='/js/login.js')

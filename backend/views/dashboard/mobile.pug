@@ -1,0 +1,35 @@
+extends ../layouts/head.pug
+block style
+	link(rel="stylesheet", href="/css/bulma.min.css")
+	link(rel="stylesheet", href="/css/dashboard.css")
+
+block body
+	body(id="mobile")
+		.container.content.has-text-centered
+			if errors.length > 0
+				.field
+					each val in errors
+						div(class=`notification is-danger`)= val
+			.logo Stepgrab
+			h1 CHECK CODE
+			form(action="/dashboard/check-code" method="POST").form
+				.field
+					input(type="text" placeholder="0000000" name='code').input.is-large.code-input
+				.field.check.btn
+					input(type="submit" value='Check').button.is-link.is-large.is-fullwidth
+					img(src="/img/check-lined.svg" width=30)
+			
+			hr
+			.field.qr.btn
+				.button.is-link.is-large.is-fullwidth
+					img(src="/img/qr.svg" width=30)
+					span.txt Scan QR Code
+				pre.error.is-invisible
+			.field#preview-div.hide
+				video#preview
+				.cycle-cameras.hide Change Camera
+				.exit Close Camera
+			a(href="/dashboard/logout").logout Logout
+
+		script(src='/js/instascan.min.js')
+		script(src='/js/business.js')

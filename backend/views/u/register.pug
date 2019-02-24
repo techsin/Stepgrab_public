@@ -1,0 +1,26 @@
+extends ../layouts/head.pug
+block style
+	link(rel="stylesheet", href="/css/bulma.min.css")
+	link(rel="stylesheet", href="/css/main.css")
+block body
+	body#register
+		.box.container
+			- errors = errors || []
+			if errors.length > 0
+				.field
+					each val in errors
+						div(class=`notification is-danger`)= val
+			.columns
+				.column.content.has-text-centered
+					a.logo.is-large(href='/') StepGrab
+					p.is-small.has-text-grey This looks like your first time, Tell us something about yourself
+			.columns
+				form.column#register_form(action="/u/register" method="POST")
+					.field
+						input(type="text" placeholder="Name" name="first_name").input
+					.field
+						input(type="tel" value=phone placeholder="Phone Number" name="phone").input
+					.field
+						input(type="number" placeholder="Zipcode" name="zipcode").input
+					.field
+						input(type="submit" value="Register").button.is-link.is-medium#register_btn

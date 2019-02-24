@@ -1,0 +1,14 @@
+extends ./layouts/head.pug
+block vars
+ - navSelected = 'overview'
+block content 
+    - notifications = notifications || []
+    if notifications.length > 0
+                .field
+                    each val in notifications
+                        div(class=`notification is-${val.type}`)= val.message
+    h1.title Overview
+    p !{user.description}
+
+append body
+    script(src="/js/fb.js")

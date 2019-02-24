@@ -1,0 +1,22 @@
+extends ../layouts/head.pug
+block style
+	link(rel="stylesheet", href="/css/bulma.min.css")
+	link(rel="stylesheet", href="/css/main.css")
+block body
+	body#login
+		.box.container
+			- errors = errors || []
+			if errors.length > 0
+				.field
+					each val in errors
+						div(class=`notification is-danger`)= val
+			.columns
+				.column.content.is-large.has-text-centered
+					a.logo.is-large(href='/') StepGrab
+					p.motto.is-small Best deals around you
+			.columns
+				form.column#login_form(action="/u/login" method="POST")
+					.field 
+						input(type="tel" placeholder="Phone Number" name="phone").input
+					.field
+						input(type="submit" value="Next").button.is-link.is-medium#next_btn

@@ -1,0 +1,120 @@
+extends ./layouts/head.pug
+block style
+	link(rel="stylesheet", href="css/businessLandingPage.css")
+	link(href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,700', rel='stylesheet')
+block body
+	body
+		.top
+			header
+				a(href='/business_faqs') FAQs
+				a(href='/case_studies') Case Studies
+				a(href='/contact') Contact
+			.hero.container
+				.left
+					.logo StepGrab
+					.description
+						| A best way for local businesses
+						| to get new customers
+					br
+					.pricing-promo Early Adopter Pricing $50 / year for 1st year
+				.right
+					form(action='/dashboard/login', method='POST', id='login-form')
+						input(type='email', placeholder='Email Address' name='email' required)
+						input(type='password', placeholder='Password' name='password' required)
+						.btns
+							a.form_btn.register(href='/dashboard/register') REGISTER
+							input(type='submit', value='LOGIN' class="g-recaptcha" data-sitekey="6LenZEgUAAAAAEtqqacs49t71AQR6b3X8x-_ejdQ" data-callback='onSubmit' data-badge="inline")
+						
+					a.forgot_pwd(href='/dashboard/forgot') Forgot Password?
+		.hero_desc
+			.big
+				strong StepGrab
+				|  lets you offer discount once per customer
+			.medium efficently attract new customers and convert current ones to loyal customers
+			.container
+				.video_icon
+					.arrow
+		h3.heading_main How it Works?
+		ul.how_works
+			li Potential customers sign up using their phone number to see deals around them.
+			li They see your discount listed on a map
+			li They like the offer and decide to check it out, they Tap and recieve the Discount Code
+			li They come to your shop, show you the code. ( QR code also avialable )
+			li You Enter/Scan the code using any Android or Iphone phone and Quickly
+			li App confirms the code, and shows what amount of discount they qualify for. (Which You Set).
+			li.active Now you have a new customer.
+
+
+		h3.heading_main How Jennie's Flower Shop Uses Technology To Win!
+		.how_story
+			| Jennie owns a flower shop, while her customers love her, her business isn't growing.
+			br
+			br
+			| After some research, she has pretty good guess of the cause. "Nobody knows about her shop and location isn't the best for visibility". 
+			br
+			br
+			| She knows how to keep customers happy, but she wish she could do more to attract new customers.
+			br
+			br
+			| Enter 
+			strong StepGrab
+			| .
+			br
+			br
+			| She creates an account, sets how much discount she wants to offer to new customers on their first visit.
+			br
+			br
+			| But she is smart, and wants to build a habit in her customers. So she chooses to offer discounts for 2nd and 3rd visits as well. By offering multiple gradual discounts, it builds a habit.
+			br
+			br
+			| And... her flower shop goes viral.
+
+		h3.heading_main Perks / Features
+		.features
+			.feature
+				.title Target Efficently
+				.desc
+					| Offering general discount attract discount shoppers. But by offering one time discount to only new customers you can incentivize new customers to check out your business wihtout losing current revenue.
+			.feature
+				.title Multiple Discounts (Habit funnel)
+				.desc
+					| Offering multiple discounts lets you build a habit among your customers. Multiple chances to win over potential customers.
+			.feature
+				.title Easy to User Interface
+				.desc
+					| Simplicty makes everything easy. With Web & Mobile website you can easily update, edit, start and stop active discounts.
+			.feature
+				.title Win back old customers
+				.desc Keep them coming. You can retarget ex-customer with discounts.
+			.feature
+				.title Insights Into Customers
+				.desc
+					| We gather deep analytics on what's working and what's not. Not only makes you better at giving smart discounts, it gives you insights into your customer base.
+			.feature.disabled
+				.title Advertise Custom deals (upcoming)
+				.desc
+					| "Free pizza after 5pm" 
+					br
+					| "Free T-Shirt on purchase" 
+					br
+					| "Buy 1 Get 1 Free"
+					br
+					| .....Limited by you creativity.
+			.feature.disabled
+				.title Go Viral (upcoming)
+				.desc
+					| StepGrab has builtin sharing functionality so your customers can share it on social networks to their friends.
+			.feature.disabled
+				.title Ambassador Program (upcoming)
+				.desc Reward your customers if they refer you to their friends. (coming soon) 
+			.feature.disabled
+				.title Hustlers (upcoming)
+				.desc Let customer name the price and find common ground. (coming soon)
+		footer
+			a(href='/contact') Contact Us
+			a(href='/careers') Careers
+			a(href='/aboutus') About Us
+			a(href='/dashboard/register') Business Signup
+			a(href='/tos') TOS
+	script(src='https://www.google.com/recaptcha/api.js', async='', defer='')
+	script(src='/js/bizLanding.js')

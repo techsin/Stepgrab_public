@@ -1,0 +1,12 @@
+extends ./layouts/head.pug
+block content 
+    if errors && errors.length > 0
+        .field
+            each val in errors
+                .notification.is-danger= val
+    h1.title Pending Verification
+    p Your account has been created, but needs to be verified. Please check your email for verification link. 
+    p To resend link click below
+    br
+    form(action="/dashboard/verify" method="POST")
+        input(type="submit" value="Resend Verification Link").is-link.button

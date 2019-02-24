@@ -1,0 +1,23 @@
+extends ../../layouts/head.pug
+block style
+	link(rel="stylesheet", href="/css/mobile.css")
+
+	
+block body
+	block vars
+		- navSelected = ""
+	body(id=navSelected).app
+		#menu
+			.title Menu
+			.items
+				a(href="/u/" class=(navSelected=='map' && "selected")) Map
+				a(href="/u/discounts" class=(navSelected=='discounts' && "selected")) Discounts
+				a(href="/u/history" class=(navSelected=='history' && "selected")) History
+				a(href="/u/profile" class=(navSelected=='profile' && "selected")) Profile
+				a(href="/u/logout" class=(navSelected=='logout' && "selected")) Logout
+				
+		header
+			img.menu-icon#menu_btn(src="/img/menu-icon.svg")
+			block header
+		block content	
+		block script

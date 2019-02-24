@@ -1,0 +1,51 @@
+extends ../layouts/head.pug
+block style
+	link(rel="stylesheet", href="/css/bulma.min.css")
+	link(rel="stylesheet", href="/css/b.css")
+
+block body
+	block vars
+	body(id=navSelected)
+		if errors.length > 0
+			.field
+				each val in errors
+					div(class=`notification is-danger`)= val
+		header.container
+			//- a(href=backURL).back_btn.button Go back
+			a(href='/u/').logo StepGrab
+		div.container
+			.box.content
+				.columns
+					.column.is-half
+						p.is-size-7.has-text-grey-light Business Name
+						h1#b-name= user.company
+						p.is-size-7.has-text-grey-light Description
+						p= user.description
+						p.is-size-7.has-text-grey-light Details
+						table.level
+							tbody
+								tr
+									td.has-text-grey-dark Address
+									td= user.street + ", " + user.state + ", " + user.country + " " + user.zipcode
+								tr
+									td.has-text-grey-dark Rating
+									td= "4.5/5"
+								tr
+									td.has-text-grey-dark Category
+									td= user.category
+								tr
+									td.has-text-grey-dark Note
+									td Please ask for Mary and mention StepGrab
+					.column.is-half#map
+						iframe(src=`https://www.google.com/maps/embed/v1/place?q=${user.latitude},${user.longitude}&zoom=17&key=${MAP_KEY}` width="100%" height="100%")
+
+				hr
+				h2 Deals
+				.deals
+					each val in deals
+						div(class={"is-success" : val.qualifyFor }).notification= val.title
+							if val.qualifyFor
+								form(method="POST" action=`/u/discounts/${val.id}`)
+									input(type='submit' value='Get this Deal').button
+							else
+								.button.is-static ----

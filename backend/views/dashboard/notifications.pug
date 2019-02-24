@@ -1,0 +1,36 @@
+extends ./layouts/head.pug
+block vars
+ - navSelected = 'notifications'
+block content 
+    h1.title Notification Settings
+    .section.content
+        if errors.length > 0
+            .field
+                each val in errors
+                    .notification.is-danger= val
+        h2 Text Notifications
+        hr
+        form(action="/dashboard/phones" method='POST').is-one-third.column
+            table
+                thead
+                    tr
+                        th Phone Number
+                        th Daily Active Codes
+                        th Remove
+                tbody
+                    each phone, i in phones 
+                        tr.num
+                            input(type="hidden" name=`numbers[${i}][id]` value=phone.id)
+                            td= phone.number
+                            td
+                                input(type="checkbox" name=`numbers[${i}][dailyCodes]` checked=phone.dailyCodes)
+                            td
+                                input(type="button" value="X").button.is-danger.is-small.remove
+            .field.is-grouped
+                .control
+                    input(type="submit" value='Update').button.is-link
+                .control 
+                    a(href="/dashboard/add_number").button Add Number
+
+block append body
+    script(src='/js/notifications.js')

@@ -1,0 +1,32 @@
+extends ../../layouts/head.pug
+block style
+	link(rel="stylesheet", href="/css/bulma.min.css")
+	link(rel="stylesheet", href="/css/dashboard.css")
+
+block body
+	block vars
+	body(id=navSelected)
+		header
+			a(href='/').logo StepGrab
+			.nav
+				a(href="/faqs") FAQs
+				a(href="/contact") Contact
+				a(href="/dashboard/")= user.firstName
+				a(href="/dashboard/logout") Logout
+		div
+			.columns.is-gapless
+				.is-2.column.left
+					aside.menu
+						ul.menu-list
+							li: a(href="/dashboard", class=(navSelected=='overview' && "is-active")) Overview
+							li: a(href="/dashboard/check-code", class=(navSelected=='check' && "is-active")) Check Code
+							li: a(href="/dashboard/discounts", class=(navSelected=='discounts' && "is-active")) Discounts
+							li: a(href="/dashboard/notifications", class=(navSelected=='notifications' && "is-active")) Notifications
+							li: a(href="/dashboard/settings", class=(navSelected=='settings' && "is-active")) Settings
+							li: a(class=(navSelected=='analytics' && "is-active")).has-text-grey-light Analytics
+							li: a( class=(navSelected=='customers' && "is-active")).has-text-grey-light Customers List
+							li: a( class=(navSelected=='payment' && "is-active")).has-text-grey-light Payment
+							//- href="/dashboard/customers", href="/dashboard/analytics", href="/dashboard/payment",
+				.is-10.column.right
+					.box
+						block content

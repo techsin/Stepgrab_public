@@ -1,0 +1,19 @@
+extends ./_layout.pug
+block vars
+	- navSelected = "discounts"
+block header
+	p Active Discounts
+block content
+	.container
+		each deal in deals
+			a.deal(href="/u/discounts/"+deal.id)
+				.left
+					.category= deal.category
+					.title= deal.title
+					.company= deal.User.company
+				.right
+					.expires= `Expires In: ${Math.round((deal.DealsUsed.expiresAt - new Date())/86400000)} day(s)`
+
+
+block script
+	script(src='/js/mobile.js')

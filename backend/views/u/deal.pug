@@ -1,0 +1,28 @@
+extends ./layouts/head.pug
+block vars
+	- navSelected = 'discounts'
+block content 
+	if success.length > 0
+		.field
+			each val in success
+				div(class=`notification is-success`)= val
+
+	a(href=backURL).goBack Back
+
+	#dealView
+		.category= deal.User.category.toUpperCase()
+		h1= deal.title
+		h3
+			a(href=`/b/${deal.User.uuid}`)= deal.User.company
+		p= deal.User.description
+		br
+		div= deal.User.street
+		div= `${deal.User.city}, ${deal.User.state}, ${deal.User.country} ${deal.User.zipcode}`
+		hr
+		.codeDiv
+			h3 Code
+			.code= deal.DealsUsed.code
+			.note= `Note: ${deal.User.note}`
+		hr
+		.map
+			iframe(src=`https://www.google.com/maps/embed/v1/place?q=${user.latitude},${user.longitude}&zoom=17&key=${MAP_KEY}` width="100%" height="400px")

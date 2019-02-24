@@ -1,0 +1,24 @@
+extends ./layouts/head.pug
+block vars
+	- navSelected = 'map'
+block content 
+	#list
+		.filters
+			//- .item.active All
+			//- .item Food
+			//- .item Beauty
+			//- .item Clothing
+			//- .item Other
+		.deals
+			//- .deal
+				//- .number 1
+				//- .title 30% off
+				//- .name Pizzeria Neptune Avenue
+				//- .rating 4.5
+				//- .category Food
+	#mapDiv
+
+append style
+	link(rel='stylesheet', href='/css/leaflet.css')
+append body
+	script(src='/js/mapCustomer.js')

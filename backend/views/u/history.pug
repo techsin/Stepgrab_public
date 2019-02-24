@@ -1,0 +1,14 @@
+extends ./layouts/head.pug
+block vars
+	- navSelected = 'history'
+block content 
+	each deal in deals
+		a.deal(href=`/u/history/${deal.id}`)
+			div
+				h2= deal.title
+				p.category= deal.category.toUpperCase()
+			div
+				strong= deal.User.company
+				div.address= `${deal.User.street}, ${deal.User.city}, ${deal.User.state}, ${deal.User.zipcode}`
+			p.rating= "4.5/5 rating"
+			div.expiresIn= deal.DealsUsed.used ? "Used" : "Expired"

@@ -1,0 +1,34 @@
+extends ./_layout.pug
+block vars
+	- navSelected = "dealView"
+block header
+	p Discount
+block content
+	.container
+		if success.length > 0
+		.field
+			each val in success
+				div(class=`notification is-success`)= val
+
+		.deal
+			.category= deal.User.category.toUpperCase()
+			.status= `Expires In: ${Math.round((deal.DealsUsed.expiresAt - new Date())/86400000)} day(s)`
+			.codeDiv
+				h3 Code
+				.code= deal.DealsUsed.code
+				.note= `Note: ${deal.User.note}`
+			hr
+			#qrcode
+			hr
+			.title= deal.title
+			.center-inb
+				a(href=`/b/${deal.User.uuid}`).company= deal.User.company
+			.description= deal.User.description
+			.street= deal.User.street
+			.address= `${deal.User.city}, ${deal.User.state}, ${deal.User.country} ${deal.User.zipcode}`
+			hr
+			.map
+				iframe(src=`https://www.google.com/maps/embed/v1/place?q=${user.latitude},${user.longitude}&zoom=17&key=${MAP_KEY}` width="100%" height="400px")
+
+block script
+	script(src='/js/mobile.js')

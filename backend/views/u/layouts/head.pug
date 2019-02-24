@@ -1,0 +1,23 @@
+extends ../../layouts/head.pug
+block style
+	link(rel="stylesheet", href="/css/main.css")
+
+block body
+	block vars
+		- navSelected = ""
+	body(id=navSelected)
+		header
+			.logo STEPGRAB
+			.menu
+				a.item(href='/u/profile')= customer.name
+				a.item(href='/help') Help
+		.main
+			.left
+				a.item(href='/u/' class=(navSelected=='map'? "selected": '')) Map
+				a.item(href='/u/discounts' class=(navSelected=='discounts'? "selected": '')) Active Discounts
+				a.item(href='/u/history' class=(navSelected=='history'? "selected": '')) History
+				a.item(href='/u/profile' class=(navSelected=='profile'? "selected": '')) Settings
+				a.item(href='/u/share' class=(navSelected=='share'? "selected": '')) Share
+				a.items(href='/u/logout') Logout
+			.right
+				block content

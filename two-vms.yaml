@@ -1,0 +1,3 @@
+resources:
+- name: nodejs-1-vm
+  type: n1-standard-1

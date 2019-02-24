@@ -1,0 +1,28 @@
+extends ./layouts/head.pug
+
+block style
+	link(rel="stylesheet", href="/css/bulma.min.css")
+	link(rel="stylesheet", href="/css/contact.css")
+
+block body
+	block vars
+		- navSelected = "contact"
+	body(id=navSelected)
+		.container
+			.box.content.has-text-centered
+				a(href="/").logo: h1.is-large STEPGRAB
+				h3.title Contact
+				form(action="/contact" method="POST")
+					if errors.length > 0
+						.field
+							each val in errors
+								.notification.is-danger= val
+					.field
+						input(type="email" name="email"  placeholder="Email Address" value=body.email required).input
+					.field
+						input(type="text" name="subject" placeholder="Subject" value=body.subject required).input
+					.field
+						textarea(name="message" placeholder="Your Question, Feedback, or Inquiries" required).textarea
+							= body.message
+					.field
+						input(type="submit" value="Submit").button.is-link.is-pulled-left

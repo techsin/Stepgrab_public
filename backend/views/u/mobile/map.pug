@@ -1,0 +1,23 @@
+extends ./_layout.pug
+block vars
+	- navSelected = "map"
+block header
+	.filters
+		p Filter
+		select#filter(name="filter")
+			option All
+			option Food
+			option Fun
+			option Beauty
+			option Clothing
+
+block content
+	.container
+		#mapDiv
+		#detail
+		#locateme-btn 
+			img(src="/img/gps.svg")
+append style
+	link(rel='stylesheet', href='/css/leaflet.css')
+block script
+	script(src='/js/mobile.js')

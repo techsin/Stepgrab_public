@@ -1,0 +1,23 @@
+extends ./../layouts/head.pug
+block style
+	link(rel="stylesheet", href="/css/bulma.min.css")
+	link(rel="stylesheet", href="/css/dashboard.css")
+
+block body
+	body#registerLogin
+		a(href="/business").logo STEPGRAB
+		h3.motto Get New Customers
+		h3.title Recover Password
+		form(action="/dashboard/forgot" method='POST')
+			if errors.length > 0
+				.field
+					each val in errors
+						.notification.is-danger= val
+			.field 
+				h3 A link to recover your password would be sent to your email address that is registered with us.
+			.field
+				input(type="email" class='input' name='email' placeholder='Email Adress' required)
+			.field
+				input(type="submit" class='button is-link input is-medium' value='Submit')
+			.field
+				a.button.is-text(href="/dashboard/login") Remember it? Login!

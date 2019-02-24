@@ -1,0 +1,38 @@
+extends ../../layouts/head.pug
+block style
+	link(rel="stylesheet", href="/css/mobile.css")
+
+	
+block body
+	block vars
+		- navSelected = "home"
+	body(id=navSelected)
+		header
+			.logo STEPGRAB
+			.motto first time customer discounts
+			
+			.hero
+				form(action="/u/login" method='POST')
+					.blueBox
+						.text Explore new places and Save tons of money.  Enter Phone number to get started.
+						input(type="tel" placeholder="Phone Number" name="phone")
+					input(type="submit" value="Let's Go")
+			
+			h2 How it works?
+
+			.steps
+				.step
+					.icon
+						img(src="/img/magnification-lens@2x.png")
+					.text Find a deal you like
+				.step
+					.icon
+						img(src="/img/smartphone@2x.png")
+					.text Recieve Coupon Code in Text Message
+				.step
+					.icon
+						img(src="/img/star@2x.png")
+					.text Get discount by showing code to cashier
+		.section.biz
+			p Are you a Business? 
+			a(href="/dashboard/").login-btn Login

@@ -1,0 +1,26 @@
+extends ./layouts/head.pug
+block vars
+	- navSelected = 'check'
+block content 
+	h1.title Redeem Discount Code
+	.content
+		if errors.length > 0
+			.field
+				each val in errors
+					.notification.is-danger= val
+		
+		if success
+			h1.has-text-success
+				img(src="/img/success_check.svg")
+				| Deal Redeemed
+			.notification.is-success= success.title
+		
+		form(action="/dashboard/check-code" method='POST').is-one-third.column
+			.field
+				strong 
+					small Enter Code Here
+				input.input(type="text" placeholder="0000000" name='code')
+				br
+				br
+				input(type="submit" value="Submit").button.is-link.is-fullwidth
+

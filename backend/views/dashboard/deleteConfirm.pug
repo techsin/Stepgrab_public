@@ -1,0 +1,27 @@
+extends ./layouts/head.pug
+block vars
+	- navSelected = 'settings'
+	- body = body || {}
+block content 
+	if errors.length > 0
+		.field
+			each val in errors
+				.notification.is-danger= val
+
+	h1.title Settings
+	.section
+		.columns
+			.content.column.is-half
+				h2 Delete Confirmation
+				hr
+				form(action="/dashboard/delete" method="POST")
+					.field
+						.notification.is-warning
+							| You will lose all of your account, this action is irreversible.
+							| If you're unsure about something you can either 
+							a(href='/contact') Contact us 
+							| or 
+							a(href='/faqs') Read Faqs
+
+					.field
+						input(type="submit" class='button is-danger' value='Delete')

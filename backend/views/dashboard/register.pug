@@ -1,0 +1,66 @@
+extends ./../layouts/head.pug
+block style
+	link(rel="stylesheet", href="/css/bulma.min.css")
+	link(rel="stylesheet", href="/css/dashboard.css")
+
+block body
+	body#registerLogin
+		a(href="/business").logo STEPGRAB
+		h3.motto Become Our Partner
+		h3.title Registration
+		form(action="/dashboard/register" method='POST')
+			-body = body || {}
+			if errors.length > 0
+				.field
+					each val in errors
+						.notification.is-danger= val
+			.field
+				input(type="text" class='input' name='firstName' placeholder='First Name' value=body.firstName required)
+			.field
+				input(type="text" class='input' name='lastName' placeholder='Last Name' value=body.lastName required)
+			.field
+				input(type="text" class='input' name='company' placeholder='Business/Shop Name' value=body.company required)
+			.field
+				textarea(type="text" class='textarea' name='description' placeholder='In one sentence, what is your business about' required)
+					= body.description
+			.field.select 
+				select(name="category" id="category" required)
+					option(selected) Select Category
+					option(value="beauty" selected=body.category=="beauty") Beauty
+					option(value="food" selected=body.category=="food") Food
+					option(value="fun" selected=body.category=="fun") Fun
+					option(value="clothing" selected=body.category=="clothing") Clothing
+					option(value="other" selected=body.category=="other") Other
+			.field
+				input(type="tel" class='input' name='phone' placeholder='Phone Number' value=body.phone required)
+			.field
+				input(type="text" class='input' name='street' placeholder='Street Address' id="street" value=body.street required) 
+			.field.is-grouped
+				.control
+					input(type="text" class='input' name='city' placeholder='City' id="city" value=body.city required) 
+				.control
+					input(type="text" class='input' name='state' placeholder='State' id="state" value=body.state required) 
+			.field
+				input(type="number" class='input' name='zipcode' placeholder='Zipcode' id='zipcode' value=body.zipcode required) 
+			.field.select 
+				select(name="country" id="country" required)
+					option Select Country
+					option(value="US" selected) United States
+			.field
+				input(type="email" class='input' name='email' placeholder='Email Adress' value=body.email required)
+			.field
+				input(type="password" class='input' name='password' placeholder='Password - minimum 8 characters and at least 1 number' required)
+			.field
+				.g-recaptcha(data-sitekey='6LcgTkgUAAAAAKUZRCzG43MXnRyFfT_UEG6xj6g6')
+			.field
+				input(type="submit" class='button is-link input is-medium' value='Register')
+
+
+
+			.field.level
+				.control
+					a.button.is-text(href="/dashboard/login") Already a user? Login!
+		script(src='/js/autocomplete.js')
+		script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAokYsRb2fEMi4ZueG7S05yrjl1LmcYs_Y&libraries=places&callback=initAutocomplete', async='', defer='')
+		script(src='https://www.google.com/recaptcha/api.js')
+		script(src='/js/login.js')
